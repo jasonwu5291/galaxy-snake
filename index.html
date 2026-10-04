@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#02010c" />
+  <meta name="description" content="在銀河背景裡玩貪食蛇。用方向鍵控制蛇頭，吃掉星塵變長，避開牆壁和自己的身體。" />
+  <title>銀河貪食蛇</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%2302010c' width='32' height='32' rx='8'/%3E%3Cpath fill='%235eead4' d='M6 16h8v4h4v4h4V12H14V8H6z'/%3E%3Ccircle cx='24' cy='8' r='3' fill='%23fde68a'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cosmos" aria-hidden="true">
+    <div class="nebula n1"></div>
+    <div class="nebula n2"></div>
+    <div class="nebula n3"></div>
+    <div class="milky"></div>
+    <canvas id="stars"></canvas>
+    <div class="vignette"></div>
+  </div>
+
+  <main class="shell">
+    <header class="hud">
+      <div class="title-block">
+        <p class="eyebrow">Galaxy Snake</p>
+        <h1>銀河貪食蛇</h1>
+      </div>
+      <div class="scores">
+        <p class="stat"><span>分數</span> <strong id="score">0</strong></p>
+        <p class="stat"><span>最高分</span> <strong id="best">0</strong></p>
+      </div>
+    </header>
+
+    <div class="board-frame" id="board-frame">
+      <canvas id="board" width="640" height="640">貪食蛇遊戲畫面</canvas>
+      <div id="overlay" class="overlay">
+        <p class="overlay-kicker" id="overlay-kicker">準備出發</p>
+        <h2 id="overlay-title">按方向鍵開始</h2>
+        <p id="overlay-text">吃掉星塵讓身體變長，避開牆壁和自己的身體。</p>
+        <button id="restart" type="button" hidden>再玩一次</button>
+      </div>
+    </div>
+
+    <div class="pad" aria-label="方向控制">
+      <button type="button" data-dir="up" aria-label="向上">↑</button>
+      <button type="button" data-dir="left" aria-label="向左">←</button>
+      <button type="button" data-dir="down" aria-label="向下">↓</button>
+      <button type="button" data-dir="right" aria-label="向右">→</button>
+    </div>
+    <p class="hint">方向鍵控制蛇頭，蛇身跟著前進。撞到牆壁或自己的身體即失敗。手機可滑動遊戲區，或點方向鈕。</p>
+    <p id="live" class="sr-only" aria-live="polite">按方向鍵開始。吃掉星塵讓身體變長，避開牆壁和自己的身體。</p>
+  </main>
+
+  <script src="game.js" defer></script>
+</body>
+</html>
